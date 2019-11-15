@@ -1,7 +1,12 @@
+#DOCKER INSTALL
+
+mv /Users/froussel/Library/Containers/com.docker.docker/Data/com.docker.driver.amd64-linux/Docker.qcow2 /sgoinfre/goinfre/Perso/froussel
+
+ln -s /sgoinfre/goinfre/Perso/froussel/Docker.qcow2 /Users/froussel/Library/Containers/com.docker.docker/Data/com.docker.driver.amd64-linux/Docker.qcow2 
+
+#DOCKER COMMAND
+
 docker build -t froussel/test1 .
-
 docker run --rm -it -p 80:80 froussel/test1
-
 docker kill dc5618ce910b
-
 docker ps -a

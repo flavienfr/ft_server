@@ -37,5 +37,9 @@ mv mkcert-v1.1.2-linux-amd64 mkcert
 chmod +x mkcert
 ./mkcert -install
 ./mkcert localhost
+rm ~/mkcert/mkcert
 
+#START NGINX AND CLEAN
+
+rm /tmp/*
 service nginx start
