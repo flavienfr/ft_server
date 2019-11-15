@@ -1,0 +1,54 @@
+server {
+	listen 80 default_server;
+	listen [::]:80 default_server;
+}
+server {
+	listen 443 ssl default_server;
+	listen [::]:443 ssl default_server;
+	
+	root /var/www/wordpress;
+	index index.php index.html index.htm index.nginx-debian.html;
+
+	server_name localhost;
+	ssl_certificate ~/mkcert/localhost.pem;
+	ssl_certificate_key ~/mkcert/localhost-key.pem;
+
+	location / {
+		try_files $uri $uri/ =404;
+	}
+
+	location ~ \.php$ {
+    	try_files $uri =404;
+    	fastcgi_pass unix:/run/php/php7.3-fpm.sock;
+    	fastcgi_index index.php;
+    	fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;
+    	include fastcgi_params;        
+	}
+
+	# deny access to .htaccess files, if Apache's document root
+	# concurs with nginx's one
+	#
+	#location ~ /\.ht {
+	#	deny all;
+	#}
+}
+
+
+# Virtual Host configuration for example.com
+#
+# You can move that to a different file under sites-available/ and symlink that
+# to sites-enabled/ to enable it.
+#
+#server {
+#	listen 80;
+#	listen [::]:80;
+#
+#	server_name example.com;
+#
+#	root /var/www/example.com;
+#	index index.html;
+#
+#	location / {
+#		try_files $uri $uri/ =404;
+#	}
+#}

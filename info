@@ -1,0 +1,7 @@
+docker build -t froussel/test1 .
+
+docker run --rm -it -p 80:80 froussel/test1
+
+docker kill dc5618ce910b
+
+docker ps -a
