@@ -10,19 +10,18 @@ RUN apt-get update && apt-get upgrade \
 && apt-get -y install mariadb-server \
 && apt-get clean -y
 
-COPY srcs/wordpress.tar.gz /var/www/wordpress.tar.gz
+COPY srcs/wordpress.tar.gz /tmp/wordpress.tar.gz
 COPY srcs/db_wordpress.php /tmp/wp-config.php
+COPY srcs/index.html /tmp/index.html
 COPY srcs/sites_enable /etc/nginx/sites-available/default
 COPY srcs/phpmyadmin_config /tmp/config.inc.php
+COPY srcs/launcher_no_index /tmp/launcher_no_index
 COPY srcs/launcher /tmp/launcher 
 
 EXPOSE 80
+EXPOSE 443
 #ENV MYSQL_ROOT_PASSWORD=root
 #ENV MYSQL_USER=root
 #ENV MYSQL_PASSWORD=password
 
 CMD bash /tmp/launcher && bash
-
-
-
-

@@ -3,7 +3,6 @@
 mkdir /var/www/wordpress
 tar -xf /tmp/wordpress.tar.gz -C /var/www/wordpress
 mv /tmp/wp-config.php /var/www/wordpress/wordpress/wp-config.php
-cp /tmp/index.html /var/www/wordpress/index.html
 rm /tmp/wordpress.tar.gz
 
 #SERVICE START
@@ -42,5 +41,5 @@ rm ~/mkcert/mkcert
 
 #START NGINX AND CLEAN
 
-#rm /tmp/*
+rm /tmp/*
 service nginx start
