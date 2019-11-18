@@ -42,5 +42,5 @@ rm ~/mkcert/mkcert
 
 #START NGINX AND CLEAN
 
-#rm /tmp/*
+rm /tmp/*
 service nginx start
